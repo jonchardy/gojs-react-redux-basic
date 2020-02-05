@@ -237,9 +237,9 @@ class GoJSWrapper extends React.Component<DiagramProps> {
           });
         }
       }
-    } /*else {
+    } else {
       this.props.editInspected(path, value);
-    }*/
+    }
   }
 
   /**
