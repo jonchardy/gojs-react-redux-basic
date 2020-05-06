@@ -8,7 +8,7 @@
     "@types/react-dom": "16.0.11",
     "@types/react-redux": "^7.1.7",
     "fs-extra": "^8.1.0",
-    "gojs": "2.1.7",
+    "gojs": "^2.1.15",
     "gojs-react": "^1.0.5",
     "immer": "^3.3.0",
     "react": "^16.12.0",
