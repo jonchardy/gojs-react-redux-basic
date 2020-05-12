@@ -14,6 +14,8 @@ import { insertLink, insertNode, modifyLink, modifyModel, modifyNode, removeLink
 import { changeInspected, editInspected } from '../store/inspector/actions';
 import { SelectionInspector } from './SelectionInspector';
 
+import { KeyService } from '../services/KeyService';
+
 interface StateProps {
   nodeDataArray: Array<go.ObjectData>;
   linkDataArray: Array<go.ObjectData>;
@@ -77,6 +79,7 @@ class GoJSWrapper extends React.Component<DiagramProps> {
     this.handleModelChange = this.handleModelChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleRelinkChange = this.handleRelinkChange.bind(this);
+    this.handleAddNode = this.handleAddNode.bind(this);
   }
 
   /**
@@ -254,6 +257,16 @@ class GoJSWrapper extends React.Component<DiagramProps> {
       this.props.setSkips(false);
     });
   }
+  
+  /**
+   * Handle click of Add Node button.
+   */
+  public handleAddNode() {
+    batch(() => {
+      this.props.insertNode({ key: KeyService.generate(), text: "new node", color: "lime" });
+      this.props.setSkips(false);
+    });
+  }
 
   public render() {
     const selectedData = this.props.selectedData;
@@ -292,6 +305,7 @@ class GoJSWrapper extends React.Component<DiagramProps> {
             checked={this.props.modelData.canRelink}
             onChange={this.handleRelinkChange} />
         </label>
+        <button onClick={this.handleAddNode}>Add Node</button>
         {inspector}
       </div>
     );

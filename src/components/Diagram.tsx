@@ -7,6 +7,7 @@ import { ReactDiagram } from 'gojs-react';
 import * as React from 'react';
 
 import { GuidedDraggingTool } from '../GuidedDraggingTool';
+import { KeyService } from '../services/KeyService';
 
 import './Diagram.css';
 
@@ -74,22 +75,17 @@ export class DiagramWrapper extends React.Component<DiagramProps, {}> {
           'draggingTool.verticalGuidelineColor': 'blue',
           'draggingTool.centerGuidelineColor': 'green',
           'draggingTool.guidelineWidth': 1,
+          layout: $(go.ForceDirectedLayout),
           model: $(go.GraphLinksModel,
             {
               linkKeyProperty: 'key',  // IMPORTANT! must be defined for merges and data sync when using GraphLinksModel
               // positive keys for nodes
               makeUniqueKeyFunction: (m: go.Model, data: any) => {
-                let k = data.key || 1;
-                while (m.findNodeDataForKey(k)) k++;
-                data.key = k;
-                return k;
+                return KeyService.generate();
               },
               // negative keys for links
               makeUniqueLinkKeyFunction: (m: go.GraphLinksModel, data: any) => {
-                let k = data.key || -1;
-                while (m.findLinkDataForKey(k)) k--;
-                data.key = k;
-                return k;
+                return KeyService.generate();
               }
             })
         });
