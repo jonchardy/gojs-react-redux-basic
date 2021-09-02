@@ -10,7 +10,7 @@
     "fs-extra": "^9.0.0",
     "gojs": "^2.1.16",
     "gojs-react": "^1.0.7",
-    "immer": "^8.0.1",
+    "immer": "^9.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
