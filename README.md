@@ -1,5 +1,7 @@
 # gojs-react-redux-basic
 
+Migrated to https://github.com/NorthwoodsSoftware/gojs-react-samples/tree/main/gojs-react-redux-basic
+
 ### By Northwoods Software for [GoJS 2.1](https://gojs.net)
 
 This project provides a basic example of using GoJS in a React app, with Redux to make state changes.
